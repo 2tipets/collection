@@ -46,11 +46,12 @@ class CreateStatusTable extends Migration
      */
     public function down()
     { 
-        Schema::table('yourFigure', function (Blueprint $table) {
+        /*Schema::table('yourFigure', function (Blueprint $table) {
+            $table->dropForeign('yourFigure_users_id_foreign');
             $table->dropForeign('yourFigure_figure_id_foreign');
             $table->dropForeign('yourFigure_condition_id_foreign');
-            $table->dropForeign('yourFigure_users_id_foreign');
-        });
+        });*/
+
         Schema::dropIfExists('yourFigure');
         Schema::dropIfExists('condition');
     }

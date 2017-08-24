@@ -30,11 +30,11 @@ class CreateCollectionUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('collection_user', function (Blueprint $table) {
-            $table->dropForeign('collection_user_users_id_foreign');
+        /*Schema::table('collection_user', function (Blueprint $table) {
+            $table->dropForeign('collection_user_user_id_foreign');
             $table->dropForeign('collection_user_collection_id_foreign');
-        });
+        });*/
 
-        Schema::dropIfExists('collection_users');
+        Schema::dropIfExists('collection_user');
     }
 }

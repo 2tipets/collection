@@ -18,3 +18,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/admin', 'AdminController@show');
+
+Route::get('/admin/addcollection', 'AdminController@addCollection');
+Route::post('/admin/addcollection', 'AdminController@saveCollection');
+Route::get('/admin/addfigure', 'AdminController@addFigure');
+Route::post('/admin/addfigure', 'AdminController@saveFigure');
+
+

@@ -14,9 +14,10 @@ class ModifyUsersColumns extends Migration
     public function up()
     {
         Schema::table('users', function(Blueprint $table) {
-            $table->string('country')->after('password');
-            $table->string('avatarPath')->after('country');
-            $table->string('description')->after('avatarPath');
+            $table->string('country')->after('password')->default('');
+            $table->string('avatarPath')->after('country')->default('');
+            $table->string('description')->after('avatarPath')->default('');
+            $table->boolean('admin')->after('description')->default(false);
         });
     }
 
@@ -27,12 +28,6 @@ class ModifyUsersColumns extends Migration
      */
     public function down()
     {
-        Schema::table('users', function(Blueprint $table) {
-            $table->string('country')->after('password');
-            $table->string('avatarPath')->after('country');
-            $table->string('description')->after('avatarPath');
-        });
-
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn(['country', 'avatarPath', 'description']);
         });
