@@ -4,7 +4,7 @@
 
 	<div class="col-lg-8 col-lg-offset-2">
 		
-		{!! Form::open( ['action' => 'addcollection', 'method' => 'POST', 'files' => true ]) !!}
+		{!! Form::open( ['action' => 'AdminController@addCollection', 'method' => 'POST', 'files' => true ]) !!}
 
 			{{ csrf_field() }}
 
