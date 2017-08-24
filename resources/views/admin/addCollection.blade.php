@@ -20,12 +20,12 @@
 
 			  <div class="form-group">
 			    <label for="brand">Marca</label>
-			    <input type="text" class="form-control" id="brand" placeholder="Brand">
+			    <input type="text" class="form-control" id="brand" name="brand" placeholder="Brand">
 			  </div>
 
 			  <div class="form-group">
 			    <label for="franchise">Franquicia</label>
-			    <input type="text" class="form-control" id="franchise" placeholder="Franchise">
+			    <input type="text" class="form-control" id="franchise" name="franchise" placeholder="Franchise">
 			  </div>
 
 			<button type="submit" class="btn btn-default">Submit</button>
