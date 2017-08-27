@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Collection;
+use App\Figure;
 
 class AdminController extends Controller
 {
@@ -40,6 +41,34 @@ class AdminController extends Controller
     	$collection->save();
 
     	//Redirect to the desired location
+    	return redirect()->action('AdminController@show');
+    }
+
+    public function addFigure()
+    {
+    	$collections = Collection::all()->pluck('name', 'id')->toArray();
+    	$collections[0] = 'Choose a collection from the list';
+    	asort($collections);
+
+    	return view('admin.addFigure')->with(compact('collections'));
+    }
+
+    public function saveFigure(Request $request)
+    {
+    	//store the image into the correct path
+    	$file = $request->file('image');
+    	$destinationPath = public_path('/images');
+    	$file->move($destinationPath, $file->getClientOriginalName());
+
+    	//Create the figure object with the form info
+    	$figure = new Figure;
+    	$figure->fill(request(['name', 'year', 'collection_id', 'size', 'barcode']));
+    	$figure->picture = $file->getClientOriginalName();
+    	
+    	//save the figure object
+    	$figure->save();
+
+    	//redirect to the home admin page 
     	return redirect()->action('AdminController@show');
     }
 
