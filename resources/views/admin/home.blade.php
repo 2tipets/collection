@@ -1,9 +1,15 @@
-@extends('admin.master')
+@extends('layouts.admin')
+
+@section('pageTitle')
+	Home
+@endsection
 
 @section('content')
 
-	<div class="col-lg-12">
-		<a href="admin/addcollection" class="btn btn-primary">Add Collection</a>
-		<a href="admin/addfigure" class="btn btn-primary">Add Figure</a>
-	</div>
+   @include('admin.userSummary')
+   @include('admin.headerSection')
+   @include('admin.projectsSection')
+   @include('admin.clientSection')
+   @include('admin.feedsSection')
+   @include('admin.updatesSection')
 @endsection

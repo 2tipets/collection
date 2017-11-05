@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Collection;
 use App\Figure;
+use App\User;
+use App\Brand;
+use App\Franchise;
+use Auth;
 
 class AdminController extends Controller
 {
@@ -14,14 +18,35 @@ class AdminController extends Controller
     	$this->middleware('admin');
     }
 
+    public function index()
+    {
+        $user = User::find(Auth::id());
+        return view('admin.home')->with(['user' => $user]);
+    }
+
     public function show()
     {
-    	return view('admin.home');
+        $user = User::find(Auth::id());
+    	return view('admin.home')->with(['user' => $user]);
     }
 
     public function addCollection()
     {
-    	return view('admin.addCollection');
+        $user = User::find(Auth::id());
+        $brands = [0 => 'Select a brand'] + Brand::all()->pluck('name', 'id')->toArray();
+        $franchises = [0 => 'Select a franchise'] + Franchise::all()->pluck('name', 'id')->toArray();
+
+    	return view('admin.addCollection')->with(compact('user', 'brands', 'franchises'));
+    }
+
+    public function showCollections()
+    {
+        return 'show collections';
+    }
+
+    public function showFigures()
+    {
+        return 'show figres';
     }
 
     public function saveCollection(Request $request)
@@ -50,7 +75,9 @@ class AdminController extends Controller
     	$collections[0] = 'Choose a collection from the list';
     	asort($collections);
 
-    	return view('admin.addFigure')->with(compact('collections'));
+        $user = User::find(Auth::id());
+
+    	return view('admin.addFigure')->with(compact('collections', 'user'));
     }
 
     public function saveFigure(Request $request)

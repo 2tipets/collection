@@ -23,11 +23,27 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin', 'AdminController@show');
+Route::get('/admin', 'AdminController@index');
 
+
+Route::get('/admin/showcollections', 'AdminController@showCollections');
 Route::get('/admin/addcollection', 'AdminController@addCollection');
 Route::post('/admin/addcollection', 'AdminController@saveCollection');
+
+Route::get('/admin/showfigures', 'AdminController@showFigures');
 Route::get('/admin/addfigure', 'AdminController@addFigure');
 Route::post('/admin/addfigure', 'AdminController@saveFigure');
+
+Route::get('/admin/brand/create', 'BrandController@create');
+Route::get('/admin/showBrands', 'BrandController@showBrands');
+Route::post('/admin/brand/store', 'BrandController@store');
+
+Route::get('/admin/franchise/create', 'FranchiseController@create');
+Route::get('/admin/franchise/index', 'FranchiseController@index');
+Route::post('/admin/franchise/store', 'FranchiseController@store');
+/**
+USER ROUTES
+*/
+Route::get('/user/edit', 'UserController@edit');
 
 

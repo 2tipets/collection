@@ -11,6 +11,11 @@
                     You are logged in!
                 </div>
             </div>
+
+            <div class="col-lg-4">
+                {{ Html::linkaction('UserController@edit', 'Edit User', ['class' => 'btn btn-default btn-success'])}}
+            </div>
+
         </div>
     </div>
 </div>
